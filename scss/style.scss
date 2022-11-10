@@ -1,0 +1,34 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'colors'; // # Imports color classes.
+
+@use 'screen'; // # Imports screensizes map variable and the size function
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+
+  @each $size, $screenwidth in screen.size() {
+    @media screen and (min-width: $screenwidth) {
+      $division: math.round(math.div(($screenwidth * .95), 10));
+      width: $division * 10;
+    }
+  }
+}
+
+// TODO: Start typing...
+
